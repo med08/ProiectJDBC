@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a9b9f8a8-1720-48d9-a0d8-75a09675a96e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManager.java" afterPath="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManagerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManagerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/em/EntityManagerImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/em/EntityManagerImplTest.java" />
     </list>
     <ignored path="ZTH.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,11 +29,11 @@
       <file leaf-file-name="EntityManagerImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManagerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.4478022">
-              <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.8084507">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1467975212839" expanded="true" signature="2116:2162" placeholder="SELECT MAX(m... missingValue" />
+                <marker date="1467993531221" expanded="true" signature="2119:2165" placeholder="SELECT MAX(m... missingValue" />
               </folding>
             </state>
           </provider>
@@ -66,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/em/EntityManagerImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#906#907#0" expanded="true" />
@@ -159,8 +156,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/database/DBManager.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/em/EntityManagerImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManagerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManagerImpl.java" />
       </list>
     </option>
   </component>
@@ -182,10 +179,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1370" />
-    <option name="height" value="744" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -926,7 +922,7 @@
       <created>1467968141064</created>
       <option name="number" value="Default" />
       <updated>1467968141064</updated>
-      <workItem from="1467968143779" duration="7078000" />
+      <workItem from="1467968143779" duration="8119000" />
     </task>
     <task id="LOCAL-00001" summary="Pt cei cu PC">
       <created>1467968639970</created>
@@ -958,7 +954,13 @@
       <option name="project" value="LOCAL" />
       <updated>1467974014449</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update final Vineri&#10;">
+      <created>1467975242971</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1467975242971</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -976,10 +978,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7078000" />
+    <option name="totallyTimeSpent" value="8119000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
+    <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -999,7 +1001,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2519084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33506945" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1016,7 +1018,8 @@
     <MESSAGE value="Check Connection" />
     <MESSAGE value="update&#10;" />
     <MESSAGE value="update EntityTest&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="update EntityTest&#10;&#10;" />
+    <MESSAGE value="update final Vineri&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="update final Vineri&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1087,18 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/em/EntityManagerImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#936#937#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1107,13 +1098,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManagerImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/em/EntityManagerImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4478022">
-          <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1467975212839" expanded="true" signature="2116:2162" placeholder="SELECT MAX(m... missingValue" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/teamnet/zth/api/em/EntityManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8084507">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1467993531221" expanded="true" signature="2119:2165" placeholder="SELECT MAX(m... missingValue" />
           </folding>
         </state>
       </provider>

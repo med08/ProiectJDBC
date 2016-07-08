@@ -3,11 +3,11 @@ package ro.teamnet.zth.api.em;
 import ro.teamnet.zth.api.database.DBManager;
 
 import java.lang.reflect.Field;
-import java.nio.LongBuffer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -45,7 +45,7 @@ o	set the value of the field with the value obtained from resultSet object;
 //        -	get table name, columns and fields by annotations using the methods from EntityUtils class;
         String tableName=EntityUtils.getTableName(entityClass);
         List<ColumnInfo> infoColoane=EntityUtils.getColumns(entityClass);
-        Field fld=EntityUtils.getFieldsByAnnotations(entityClass,);
+//        Field fld=EntityUtils.getFieldsByAnnotations(entityClass,);
 
 
         return null;
@@ -82,15 +82,43 @@ o	set the value of the field with the value obtained from resultSet object;
 
     @Override
     public <T> Object insert(T entity) {
-        conn = DBManager.getConnection();
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
 
+        Connection connection = DBManager.getConnection();
+        String tableName = EntityUtils.getTableName(entity.getClass());
+        LinkedList<ColumnInfo> columnInfoArrayList = (LinkedList<ColumnInfo>) EntityUtils.getColumns(entity.getClass());
+        Long ID = new Long(0);
+
+        for(ColumnInfo columnInfo : columnInfoArrayList){
+            if(columnInfo.isId()){
+                columnInfo.setValue(getNextIdVal(tableName,columnInfo.getDbName()));
+                ID = getNextIdVal(tableName,columnInfo.getDbName());
+            }
+            else{
+                try {
+                    Field field =  entity.getClass().getDeclaredField(columnInfo.getColumnName());
+                    field.setAccessible(true);
+                    columnInfo.setValue(field.get(entity));
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        return null;
+        QueryBuilder queryBuilder = new QueryBuilder();
+        queryBuilder = queryBuilder.setTableName(entity).addQueryColumns(columnInfoArrayList).setQueryType(QueryType.INSERT);
+        String query = queryBuilder.createQuery();
+        System.out.println(query);
+
+        try (Statement statement = connection.createStatement()){
+
+            statement.execute(query);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return entity;
     }
 
     @Override
