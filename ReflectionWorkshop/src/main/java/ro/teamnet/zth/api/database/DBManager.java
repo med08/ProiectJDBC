@@ -35,7 +35,7 @@ public class DBManager {
         catch (SQLException e){
             e.printStackTrace();
         }
-        String SQL = "select 1 from dual";
+        String SQL = "select ? from dual";
         try{
             PreparedStatement pst = conn.prepareStatement(SQL);
         }
