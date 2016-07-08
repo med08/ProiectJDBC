@@ -9,7 +9,7 @@ public interface EntityManager {
 
     <T> T findById(Class<T> entityClass, Long id);
 
-    public void getNextIdVal(String tableName, String columnIdName);
+    public Long getNextIdVal(String tableName, String columnIdName);
 
     <T> Object insert(T entity);
 
