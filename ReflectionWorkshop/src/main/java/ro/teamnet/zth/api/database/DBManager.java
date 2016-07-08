@@ -27,21 +27,17 @@ public class DBManager {
         return null;
     }
 
-    public static void checkConnection(Connection connection){
-        Connection conn = getConnection();
-        try{
-            Statement st = conn.createStatement();
-        }
-        catch (SQLException e){
+    public static boolean checkConnection(Connection connection){
+        boolean flag = false;
+        Statement statement = null;
+        String query = "SELECT 1 FROM DUAL";
+        try {
+            statement = connection.createStatement();
+            flag = statement.execute(query);
+        } catch (SQLException e ) {
             e.printStackTrace();
         }
-        String SQL = "select ? from dual";
-        try{
-            PreparedStatement pst = conn.prepareStatement(SQL);
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
+        return flag;
     }
 
 
