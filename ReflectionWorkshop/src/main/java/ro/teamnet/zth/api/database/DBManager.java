@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DBManager {
 
-    private static final String CONNECTION_STRING = "jdbc:oracle:thin:@" + DBProperties.IP + ":" + DBProperties.PORT;
+    private static final String CONNECTION_STRING = "jdbc:oracle:thin:@" + DBProperties.IP + ":" + DBProperties.PORT+":xe";
 
     private DBManager() throws UnsupportedOperationException{
     }
