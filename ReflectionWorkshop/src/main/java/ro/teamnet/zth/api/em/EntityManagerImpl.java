@@ -166,23 +166,23 @@ o	set the value of the columnInfo with the value obtained from the field;
 //            set the value of the columnInfo with the value obtained from the field;
                 columnInfo.setValue(valueField.get(obj));
 //            -	create a Condition object where you need to set id value which will be updated;
-
-
-    //            if(columnInfo.isId()){
-    //                columnInfo.setValue(getNextIdVal(tableName,columnInfo.getDbName()));
-    //                ID = getNextIdVal(tableName,columnInfo.getDbName());
-    //            }
-    //            else{
-    //                try {
-    //                    Field field =  entity.getClass().getDeclaredField(columnInfo.getColumnName());
-    //                    field.setAccessible(true);
-    //                    columnInfo.setValue(field.get(entity));
-    //                } catch (NoSuchFieldException e) {
-    //                    e.printStackTrace();
-    //                } catch (IllegalAccessException e) {
-    //                    e.printStackTrace();
-    //                }
-    //            }
+            Condition condition=new Condition();
+            condition.setValue(columnInfo.getValue());
+            condition.setColumnName(columnInfo.getColumnName());
+            if (columnInfo.isId()) {
+                columnInfo.setValue(getNextIdVal(tableName, columnInfo.getDbName()));
+                ID = getNextIdVal(tableName, columnInfo.getDbName());
+            } else {
+                try {
+                    Field field = entity.getClass().getDeclaredField(columnInfo.getColumnName());
+                    field.setAccessible(true);
+                    columnInfo.setValue(field.get(entity));
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         } catch (NoSuchFieldException e) {
