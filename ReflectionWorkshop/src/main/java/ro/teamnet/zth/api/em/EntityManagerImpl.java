@@ -44,8 +44,8 @@ o	set the value of the field with the value obtained from resultSet object;
             }
         }
 //        -	get table name, columns and fields by annotations using the methods from EntityUtils class;
-        String tableName=EntityUtils.getTableName(entityClass);
-        List<ColumnInfo> infoColoane=EntityUtils.getColumns(entityClass);
+        String tableName = EntityUtils.getTableName(entityClass);
+        List<ColumnInfo> infoColoane = EntityUtils.getColumns(entityClass);
 //        Field fld=EntityUtils.getFieldsByAnnotations(entityClass,);
 
 
@@ -59,11 +59,11 @@ o	set the value of the field with the value obtained from resultSet object;
         String max_id = null;
 
         Statement statement = null;
-        String query = "SELECT MAX("+ columnIdName +") AS MAX_ID FROM "+ tableName;
+        String query = "SELECT MAX(" + columnIdName + ") AS MAX_ID FROM " + tableName;
 
         try {
             statement = connection.createStatement();
-            ResultSet RS =  statement.executeQuery(query);
+            ResultSet RS = statement.executeQuery(query);
 
             while (RS.next()) {
 
@@ -71,13 +71,13 @@ o	set the value of the field with the value obtained from resultSet object;
             }
 
             long result = Long.valueOf(max_id).longValue();
-            return result+1;
+            return result + 1;
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
-        }
+    }
 
     @Override
     public <T> Object insert(T entity) {
@@ -87,14 +87,13 @@ o	set the value of the field with the value obtained from resultSet object;
         LinkedList<ColumnInfo> columnInfoArrayList = (LinkedList<ColumnInfo>) EntityUtils.getColumns(entity.getClass());
         Long ID = new Long(0);
 
-        for(ColumnInfo columnInfo : columnInfoArrayList){
-            if(columnInfo.isId()){
-                columnInfo.setValue(getNextIdVal(tableName,columnInfo.getDbName()));
-                ID = getNextIdVal(tableName,columnInfo.getDbName());
-            }
-            else{
+        for (ColumnInfo columnInfo : columnInfoArrayList) {
+            if (columnInfo.isId()) {
+                columnInfo.setValue(getNextIdVal(tableName, columnInfo.getDbName()));
+                ID = getNextIdVal(tableName, columnInfo.getDbName());
+            } else {
                 try {
-                    Field field =  entity.getClass().getDeclaredField(columnInfo.getColumnName());
+                    Field field = entity.getClass().getDeclaredField(columnInfo.getColumnName());
                     field.setAccessible(true);
                     columnInfo.setValue(field.get(entity));
                 } catch (NoSuchFieldException e) {
@@ -109,7 +108,7 @@ o	set the value of the field with the value obtained from resultSet object;
         String query = queryBuilder.createQuery();
         System.out.println(query);
 
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
 
             statement.execute(query);
 
@@ -150,51 +149,55 @@ o	set the value of the columnInfo with the value obtained from the field;
     @Override
     public <T> T update(T entity) {
         try {
-        conn = DBManager.getConnection();
-        if (conn != null) {
-            try { conn.close();
-            } catch (SQLException e) { }
-        }
-        String tableName = EntityUtils.getTableName(entity.getClass());
-        LinkedList<ColumnInfo> columnInfoArrayList = (LinkedList<ColumnInfo>) EntityUtils.getColumns(entity.getClass());
-        Long ID = new Long(0);
-        T obj=null;
-        for(ColumnInfo columnInfo : columnInfoArrayList){
-
-                Field valueField = obj.getClass().getDeclaredField(columnInfo.getColumnName());
-            valueField.setAccessible(true);
-//            set the value of the columnInfo with the value obtained from the field;
-                columnInfo.setValue(valueField.get(obj));
-//            -	create a Condition object where you need to set id value which will be updated;
-            Condition condition=new Condition();
-            condition.setValue(columnInfo.getValue());
-            condition.setColumnName(columnInfo.getColumnName());
-            if (columnInfo.isId()) {
-                columnInfo.setValue(getNextIdVal(tableName, columnInfo.getDbName()));
-                ID = getNextIdVal(tableName, columnInfo.getDbName());
-            } else {
+            conn = DBManager.getConnection();
+            if (conn != null) {
                 try {
-                    Field field = entity.getClass().getDeclaredField(columnInfo.getColumnName());
-                    field.setAccessible(true);
-                    columnInfo.setValue(field.get(entity));
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+                    conn.close();
+                } catch (SQLException e) {
                 }
             }
-        }
+            String tableName = EntityUtils.getTableName(entity.getClass());
+            LinkedList<ColumnInfo> columnInfoArrayList = (LinkedList<ColumnInfo>) EntityUtils.getColumns(entity.getClass());
+            Long ID = new Long(0);
+            for (ColumnInfo columnInfo : columnInfoArrayList) {
+                Field valueField = entity.getClass().getDeclaredField(columnInfo.getColumnName());
+                valueField.setAccessible(true);
+                if (columnInfo.isId())
+                    ID=Long.valueOf(columnInfo.getValue().toString());
+//            set the value of the columnInfo with the value obtained from the field;
+                columnInfo.setValue(valueField.get(entity));
+//            -	create a Condition object where you need to set id value which will be updated;
+                Condition condition = new Condition();
+                condition.setValue(columnInfo.getValue());
+                condition.setColumnName(columnInfo.getColumnName());
+//            create a QueryBuilder object  where you set the name of table, query type, columns and conditions;
+                QueryBuilder queryBuilder = new QueryBuilder();
+                queryBuilder.setTableName(tableName);
+                queryBuilder.setQueryType(QueryType.UPDATE);
+                queryBuilder.addQueryColumns(columnInfoArrayList);
+                queryBuilder.addCondition(condition);
+                queryBuilder.createQuery();
+//            create a Statement object
+                Statement stmt = conn.createStatement();
+//            execute the query;
+                ResultSet rs = stmt.executeQuery(queryBuilder.createQuery());
+            }
+            return findById(entity,ID);
 
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
             return null;
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     @Override
     public void delete(Object entity) {
+
 
     }
 
